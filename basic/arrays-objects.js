@@ -74,11 +74,20 @@ console.log(
 
 // 6.- Ordenar los inventores por fecha de nacimiento
 printInventors(inventors.sort((a, b) => (a.year > b.year ? 1 : -1)));
-
 printInventors(inventors.sort((a, b) => a.year - b.year));
 
 // 7.- Ordenar los inventores por Apellido
+printInventors(inventors.sort((a, b) => (a.last > b.last ? 1 : -1)));
 // 8.- Convertir el array a un formato:
+console.log(
+  inventors.map((inventor) => ({
+    name: {
+      first: inventor.first,
+      last: inventor.last,
+    },
+    year: inventor.year,
+  }))
+);
 /**
  * [{name:
  *      {
