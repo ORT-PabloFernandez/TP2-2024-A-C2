@@ -26,3 +26,33 @@ const str = `<ul>
 // Tip: Obtener un array de objetos, donde cada objeto sea un video
 // {min:5, seg: 59, tipo: 'Redux Video'}
 // Tip2: split
+
+function getVideos(str) {
+  return str
+    .replace("<ul>", "")
+    .replace("</ul>", "")
+    .split("</li>")
+    .slice(0, -1)
+    .map((video) => ({
+      min: parseInt(video.split('"')[1].split(":")[0]),
+      seg: parseInt(video.split('"')[1].split(":")[1]),
+      tipo: video.split(">")[1],
+    }));
+}
+
+function getTotalSegundos(videos, tipo) {
+  //let totalSegundos = 0;
+  return (
+    videos
+      .filter((video) => video.tipo === tipo)
+      // .forEach((video) => {
+      //   totalSegundos += video.min * 60 + video.seg;
+      // });
+      .reduce((acc, video) => acc + video.min * 60 + video.seg, 0)
+  );
+
+  //return totalSegundos;
+}
+
+console.log(getVideos(str));
+console.log(getTotalSegundos(getVideos(str), "Redux Video"));
