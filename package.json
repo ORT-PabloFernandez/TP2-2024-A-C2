@@ -1,0 +1,16 @@
+{
+  "name": "tp2-2024-a-c2",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Repo oficial de la materia TP2 año 2024 curso A del primer cuatrimestre",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./file-system/index.js"
+  },
+  "author": "Pablo Fernandez",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0"
+  }
+}
