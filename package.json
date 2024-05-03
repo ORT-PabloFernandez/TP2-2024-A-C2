@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./web-server/4-ServerExpress.js"
+    "start": "nodemon ./web-server/6-PostExpress.js"
   },
   "author": "Pablo Fernandez",
   "license": "ISC",

@@ -25,6 +25,15 @@ app.get("/", (req, res) => {
 `);
 });
 
+// validacion de token
+app.use("/", (req, res, next) => {
+  if (req.query.token === "abc123") {
+    next();
+  } else {
+    res.status(401).send("Login fail");
+  }
+});
+
 // listado de todos los inventores
 app.get("/api/inventors", (req, res) => {
   console.log(req.query.filter);

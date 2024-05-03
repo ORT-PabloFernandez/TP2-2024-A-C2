@@ -14,29 +14,19 @@ const inventors = [
   { _id: 7, first: "Max", last: "Planck", year: 1858 },
 ];
 
-app.get("/", (req, res) => {
-  res.send(`
-    <html>
-        <head></head>
-        <body>
-            Home de mi API
-        </body>
-    </html>
-`);
-});
+// parsea el body en json
+app.use(express.json());
 
-// listado de todos los inventores
-app.get("/api/inventors", (req, res) => {
-  console.log(req.query.filter);
+app.post("/api/inventors", (req, res) => {
+  //   console.log(req.body.first);
+  //   console.log(req.body.last);
+  //   console.log(req.body.year);
+
+  inventors.push(req.body);
+
   res.json(inventors);
 });
 
-// un inventor por id
-app.get("/api/inventors/:id", (req, res) => {
-  console.log(req.params.id);
-  res.json(inventors.find((inventor) => inventor._id == req.params.id));
-});
-
 app.listen(PORT, () => {
-  console.log("Servidor Express levantado en el puerto ", PORT);
+  console.log("Servidor levantado en el puerto ", PORT);
 });
