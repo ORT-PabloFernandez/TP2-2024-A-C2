@@ -7,13 +7,23 @@
 
 // console.log(chalk.greenBright(texto));
 
-import { getInventor, getInventors, addInventor } from "./data/inventors.js";
+import {
+  getInventor,
+  getInventors,
+  addInventor,
+  updateInventor,
+  deleteInventor,
+} from "./data/inventors.js";
 
 //const inventors = await getInventor("6279cc3d25acad884eb79252");
 
-const result = await addInventor({
-  first: "Juan",
-  last: "Gonzalez",
-  year: 2010,
-});
+// const result = await updateInventor({
+//   _id: "663d6348934daf25327caaec",
+//   first: "Juan J",
+//   last: "Gonzalez G",
+//   year: 2011,
+// });
+
+const result = await deleteInventor("663d6348934daf25327caaec");
+
 console.log(result);

@@ -35,6 +35,30 @@ export async function addInventor(inventor) {
   return result;
 }
 
-export async function updateInventor(inventor) {}
+export async function updateInventor(inventor) {
+  const clientmongo = await getConnection();
+  const query = { _id: new ObjectId(inventor._id) };
+  const newValues = {
+    $set: {
+      first: inventor.first,
+      last: inventor.last,
+      year: inventor.year,
+    },
+  };
 
-export async function deleteInventor(id) {}
+  const result = await clientmongo
+    .db("sample_tp2")
+    .collection("inventors")
+    .updateOne(query, newValues);
+  return result;
+}
+
+export async function deleteInventor(id) {
+  const clientmongo = await getConnection();
+
+  const result = await clientmongo
+    .db("sample_tp2")
+    .collection("inventors")
+    .deleteOne({ _id: new ObjectId(id) });
+  return result;
+}
