@@ -6,13 +6,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./web-server/6-PostExpress.js"
+    "start": "nodemon ./index.js"
   },
   "author": "Pablo Fernandez",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.8",
     "chalk": "^5.3.0",
-    "express": "^4.19.2"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.6.1"
   }
 }
