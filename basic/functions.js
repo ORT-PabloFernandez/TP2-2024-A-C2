@@ -46,3 +46,16 @@ const square2 = (x) =>
     x: 3,
     y: 2,
   }(3));
+
+// Función que recibe otra función como parámetro
+const ejecutarOperacion = (a, b, operacion) => {
+  return operacion(a, b);
+};
+
+// Funciones simples que pueden pasarse como parámetros
+const suma = (x, y) => x + y;
+const multiplicacion = (x, y) => x * y;
+
+// Uso de la función pasar otra función como parámetro
+console.log(ejecutarOperacion(5, 3, suma));            // Imprime: 8
+console.log(ejecutarOperacion(5, 3, multiplicacion));  // Imprime: 15
