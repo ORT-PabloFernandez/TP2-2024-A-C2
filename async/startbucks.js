@@ -1,28 +1,36 @@
-const Pedido1 = { tipo: "Café Vainilla", cliente: "Juan" };
-const Pedido2 = { tipo: "Té helado", cliente: "Claudia" };
+// tiempos por tipo de cafe en Startbucks
 
-function pedidosStartbucks(pedido, callbackcliente) {
-  switch (pedido.tipo) {
-    case "Café Vainilla":
-      setTimeout(() => {
-        callbackcliente(pedido.cliente);
-      }, 4000);
-      break;
-    case "Té helado":
-      setTimeout(() => {
-        callbackcliente(pedido.cliente);
-      }, 2000);
-      break;
-    default:
-      break;
-  }
+const tiempoPreparacion = {
+    "Espresso": 3000,
+    "Americano": 4500,    
+    "Latte": 6000,
+    "Cappuccino": 5000,
+    "Mocha": 7000
 }
 
-const callbackcliente = function (cliente) {
-  console.log("Llamar a cliente:" + cliente);
-};
+const pedidos = [
+    { id: 1, tipo: "Espresso", cliente: "Juan" },
+    { id: 2, tipo: "Latte", cliente: "María" },
+    { id: 3, tipo: "Americano", cliente: "Pedro" }
+];
 
-pedidosStartbucks(Pedido1, callbackcliente);
-pedidosStartbucks(Pedido2, callbackcliente);
+function pedidosStartbucks(pedido, callbackCliente) {
+    const tiempo = tiempoPreparacion[pedido.tipo];
+    console.log(` Pedido recibido: ${pedido.tipo} para ${pedido.cliente}. Tiempo de preparación: ${tiempo / 1000} segundos.`);
+    if(!tiempo) {
+        console.log(`Tipo de café no reconocido: ${pedido.tipo}. No se puede preparar.`);
+        return;
+    }
+    setTimeout(() => {
+        console.log(` Pedido listo: ${pedido.tipo}`);
+        callbackCliente(pedido.cliente);
+    }, tiempo);
+}
 
-console.log("PEDIDOS STARTBUCKS");
+const callbackCliente = (cliente) => {
+    console.log(` Notificación para ${cliente}: Tu pedido está listo. ¡Disfruta tu café!`);
+}
+
+pedidos.forEach(pedido => {
+    pedidosStartbucks(pedido, callbackCliente);
+});
